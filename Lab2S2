@@ -1,0 +1,56 @@
+#include "stdafx.h"
+
+using namespace std;
+
+class Metro
+{
+    char NameOfStation[64];
+    double QuanOfSt;
+public:
+    Metro()
+    {
+        QuanOfSt=NameOfStation[0]=0;
+    }
+    void set(char name[], double quant)
+    {
+        strcpy(NameOfStation, name);
+        QuanOfSt=quant;
+    }
+    Metro(char name[], double quant)
+    {
+        strcpy(NameOfStation, name);
+        QuanOfSt=quant;
+    }
+    double GetTime(double TimeInMin)
+    {
+        return TimeInMin*QuanOfSt;
+    }
+    void Print()
+    {
+        cout << "Name of Station: " << NameOfStation << " Quantity of stations: "<< QuanOfSt;
+    }
+};
+
+int _tmain(int argc, char*argv[])
+{
+
+    int n;
+    cout << "n="; cin >> n;
+    double Timeinmin;
+    cout <<"Quantity= "; cin >> Timeinmin;
+    double AllQuant=0;
+    char Name[64]; double Quan;
+    Metro **ppM;
+    ppM= new Metro*[n];
+    for (unsigned int i=0; i<n; ++i) {
+        cout << "Object N=" << i << ":\n" << "NameOfStation: ";
+        cin >> Name;
+        cout << "Quantity of stations= ";
+        cin >> Quan;
+        ppM[i] = new Metro(Name, Quan);
+    }
+    for (unsigned int i=0; i<n; ++i) ppM[i]->Print();
+    for (unsigned int i=0; i<n; ++i) AllQuant+=ppM[i]->GetTime(Timeinmin);
+    cout<< "\nAll Quantity ="<< AllQuant;
+    system("pause");
+}
