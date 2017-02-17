@@ -36,8 +36,8 @@ int _tmain(int argc, char*argv[])
 
     int n;
     cout << "n="; cin >> n;
-    double Timeinmin;
-    cout <<"Quantity= "; cin >> Timeinmin;
+    double Timemin;
+    cout <<"Quantity= "; cin >> Timemin;
     double AllQuant=0;
     char Name[64]; double Quan;
     Metro **ppM;
@@ -49,8 +49,10 @@ int _tmain(int argc, char*argv[])
         cin >> Quan;
         ppM[i] = new Metro(Name, Quan);
     }
-    for (unsigned int i=0; i<n; ++i) ppM[i]->Print();
-    for (unsigned int i=0; i<n; ++i) AllQuant+=ppM[i]->GetTime(Timeinmin);
+    for (unsigned int i=0; i<n; ++i) 
+            ppM[i]->Print();
+    for (unsigned int i=0; i<n; ++i) 
+            AllQuant+=ppM[i]->GetTime(Timemin);
     cout<< "\nAll Quantity ="<< AllQuant;
     system("pause");
 }
